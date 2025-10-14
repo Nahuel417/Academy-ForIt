@@ -1,38 +1,41 @@
-import type { Product } from "../../entities/product.js";
-import type { ProductService } from "../product-service.js";
+import type { Product } from '../../entities/product.js';
+import type { ProductService } from '../product-service.js';
 
 export class MockedProductService implements ProductService {
-  products: Product[] = [];
+    products: Product[] = [];
 
-  constructor(products: Product[]) {
-    this.products = products;
-  }
+    constructor(products: Product[]) {
+        this.products = products;
+    }
 
-  async findById(id: string) {
-    return this.products.find((p) => p.id == id);
-  }
+    save = async (data: Product): Promise<void> => {
+        this.products.push(data);
+    };
 
-  async findAll() {
-    return this.products;
-  }
+    findAll = async (): Promise<Product[]> => this.products;
 
-  async applyDiscount() {
-    return { id: "", name: "", price: 1 };
-  }
+    findById = async (id: string): Promise<Product | undefined> => this.products.find((p) => p.id === id);
 
-  async editOne() {
-    return { id: "", name: "", price: 1 };
-  }
+    editOne = async (data: Product): Promise<Product> => {
+        const index = this.products.findIndex((p) => p.id === data.id);
+        if (index === -1) throw new Error('Product not found');
+        this.products[index] = data;
+        return this.products[index];
+    };
 
-  async getProductsWithDiscount() {
-    return [{ id: "", name: "", price: 1 }];
-  }
+    updateMany = async (data: Product[]): Promise<Product[] | undefined> => {
+        data.forEach((d) => {
+            const index = this.products.findIndex((p) => p.id === d.id);
+            if (index !== -1) this.products[index] = d;
+        });
+        return data;
+    };
 
-  async save(item: Product) {
-    this.products.push(item);
-  }
+    delete = async (id: string): Promise<void> => {
+        this.products = this.products.filter((p) => p.id !== id);
+    };
 
-  async updateMany() {
-    return [];
-  }
+    findByName = async (name: string): Promise<Product | undefined> => this.products.find((p) => p.name === name);
+
+    findByCategory = async (categoryId: string): Promise<Product[]> => this.products.filter((p) => p.categories.some((c) => c.id === categoryId));
 }

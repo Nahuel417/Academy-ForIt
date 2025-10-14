@@ -1,17 +1,17 @@
-import type { Entity } from "../utils/types/entity.js";
+import type { Entity } from '../utils/types/entity.js';
 
-export const UserStatus = {
-  ACTIVE: "ACTIVE",
-  INACTIVE: "INACTIVE",
+export const UserRole = {
+    ADMIN: 'ADMIN',
+    EMPLOYEE: 'EMPLOYEE',
 } as const;
 
-export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus];
+export type UserRoleType = (typeof UserRole)[keyof typeof UserRole];
 
 export interface User extends Entity {
-  name: string;
-  email: string;
-  password: string;
-  status: UserStatus;
+    email: string;
+    password: string;
+    role: UserRoleType;
+    createdAt: Date;
 }
 
-export type SecureUser = Omit<User, "password">;
+export type SecureUser = Omit<User, 'password'>;

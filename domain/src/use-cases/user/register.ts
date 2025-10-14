@@ -1,28 +1,27 @@
-import { UserStatus } from "../../entities/user.js";
-import type { UserService } from "../../services/user-service.js";
+import { UserRole, type User, type UserRoleType } from '../../entities/user.js';
+import type { UserService } from '../../services/user-service.js';
 
 interface RegisterDeps {
-  userService: UserService;
+    userService: UserService;
 }
 
 interface RegisterPayload {
-  name: string;
-  email: string;
-  password: string;
+    email: string;
+    password: string;
+    role?: UserRoleType;
 }
 
-export async function register(
-  { userService }: RegisterDeps,
-  { email, name, password }: RegisterPayload
-) {
-  const foundUser = await userService.findByEmail(email);
-  if (foundUser) return new Error();
+export async function register({ userService }: RegisterDeps, { email, password, role }: RegisterPayload) {
+    const foundUser = await userService.findByEmail(email);
+    if (foundUser) return new Error('User already exists');
 
-  await userService.save({
-    id: crypto.randomUUID(),
-    name,
-    email,
-    password,
-    status: UserStatus.ACTIVE,
-  });
+    const newUser: User = {
+        id: crypto.randomUUID(),
+        email,
+        password,
+        role: role ?? UserRole.EMPLOYEE,
+        createdAt: new Date(),
+    };
+
+    await userService.save(newUser);
 }
