@@ -3,6 +3,7 @@ import { deleteProduct } from './products/delete-product.js';
 import { getProductById } from './products/get-product-by-id.js';
 import { searchProducts } from './products/search-products.js';
 import { updateProduct } from './products/update-product.js';
+import { updateStock } from './products/update-stock.js';
 import { authenticate } from './user/authenticate.js';
 import { register } from './user/register.js';
 import { updateUserRole } from './user/update-user-role.js';
@@ -26,6 +27,7 @@ export const domainUseCases = {
     deleteProduct: { useCase: deleteProduct, enable: true },
     getProductById: { useCase: getProductById, enable: true },
     searchProducts: { useCase: searchProducts, enable: true },
+    updateStock: { useCase: updateStock, enable: true },
 } as const satisfies Record<string, UseCaseDeclaration>;
 
 export const USE_CASE_NAME = Object.keys(domainUseCases).reduce((acc, key) => {
