@@ -42,9 +42,9 @@
         "skipLibCheck": true,
         "baseUrl": ".", // Esto permite usar paths relativos a la raíz
         "paths": {
-            "@backend/*": ["./apps/backend/src/*"],
-            "@frontend/*": ["./apps/frontend/src/*"],
-            "@domain/*": ["./domain/src/*"]
+            "@backend/*": ["apps/backend/src/*"],
+            "@frontend/*": ["apps/frontend/src/*"],
+            "@domain/*": ["domain/src/*"]
         },
         "ignoreDeprecations": "6.0"
     }
