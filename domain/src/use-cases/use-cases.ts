@@ -1,5 +1,6 @@
-import { getProductsList } from './products/get-product-list.js';
-import { getProduct } from './products/get-product.js';
+import { addProduct } from './products/add-product.js';
+// import { getProductsList } from './products/get-product-list.js';
+// import { getProduct } from './products/get-product.js';
 import { authenticate } from './user/authenticate.js';
 import { register } from './user/register.js';
 import { updateUserRole } from './user/update-user-role.js';
@@ -18,8 +19,8 @@ export const domainUseCases = {
     updateUserRole: { useCase: updateUserRole, enable: true },
 
     // Productos
-    getProduct: { useCase: getProduct, enable: true },
-    getProductsList: { useCase: getProductsList, enable: true },
+    addProduct: { useCase: addProduct, enable: true },
+    // getProductsList: { useCase: getProductsList, enable: true },
 } as const satisfies Record<string, UseCaseDeclaration>;
 
 export const USE_CASE_NAME = Object.keys(domainUseCases).reduce((acc, key) => {
