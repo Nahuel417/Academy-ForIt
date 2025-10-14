@@ -1,6 +1,7 @@
 import { addProduct } from './products/add-product.js';
 import { deleteProduct } from './products/delete-product.js';
 import { getProductById } from './products/get-product-by-id.js';
+import { getProductsList } from './products/get-products-list.js';
 import { searchProducts } from './products/search-products.js';
 import { updateProduct } from './products/update-product.js';
 import { updateStock } from './products/update-stock.js';
@@ -26,6 +27,7 @@ export const domainUseCases = {
     updateProduct: { useCase: updateProduct, enable: true },
     deleteProduct: { useCase: deleteProduct, enable: true },
     getProductById: { useCase: getProductById, enable: true },
+    getProductList: { useCase: getProductsList, enable: true },
     searchProducts: { useCase: searchProducts, enable: true },
     updateStock: { useCase: updateStock, enable: true },
 } as const satisfies Record<string, UseCaseDeclaration>;
