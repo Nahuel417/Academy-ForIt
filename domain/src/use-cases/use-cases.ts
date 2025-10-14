@@ -1,4 +1,5 @@
 import { createOrder } from './order/create-order.js';
+import { getOrderById } from './order/get-order-id.js';
 import { updateOrderStatus } from './order/update-order-status.js';
 import { addProduct } from './products/add-product.js';
 import { deleteProduct } from './products/delete-product.js';
@@ -36,6 +37,7 @@ export const domainUseCases = {
     // Ordenes
     createOrder: { useCase: createOrder, enable: true },
     updateOrderStatus: { useCase: updateOrderStatus, enable: true },
+    getOrderById: { useCase: getOrderById, enable: true },
 } as const satisfies Record<string, UseCaseDeclaration>;
 
 export const USE_CASE_NAME = Object.keys(domainUseCases).reduce((acc, key) => {
