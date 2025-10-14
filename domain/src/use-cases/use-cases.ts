@@ -1,3 +1,4 @@
+import { createOrder } from './order/create-order.js';
 import { addProduct } from './products/add-product.js';
 import { deleteProduct } from './products/delete-product.js';
 import { getProductById } from './products/get-product-by-id.js';
@@ -30,6 +31,9 @@ export const domainUseCases = {
     getProductList: { useCase: getProductsList, enable: true },
     searchProducts: { useCase: searchProducts, enable: true },
     updateStock: { useCase: updateStock, enable: true },
+
+    // Ordenes
+    createOrder: { useCase: createOrder, enable: true },
 } as const satisfies Record<string, UseCaseDeclaration>;
 
 export const USE_CASE_NAME = Object.keys(domainUseCases).reduce((acc, key) => {
