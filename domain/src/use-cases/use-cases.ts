@@ -2,8 +2,6 @@ import { addProduct } from './products/add-product.js';
 import { deleteProduct } from './products/delete-product.js';
 import { getProductById } from './products/get-product-by-id.js';
 import { updateProduct } from './products/update-product.js';
-// import { getProductsList } from './products/get-product-list.js';
-// import { getProduct } from './products/get-product.js';
 import { authenticate } from './user/authenticate.js';
 import { register } from './user/register.js';
 import { updateUserRole } from './user/update-user-role.js';
