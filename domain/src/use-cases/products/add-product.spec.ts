@@ -13,6 +13,7 @@ describe('addProduct use-case', () => {
         const result = await addProduct({ productService }, { name: 'Mouse', price: 50, stock: 10, categories: [], createdAt: new Date() });
 
         expect(result).toBeUndefined();
+        expect(productService.products.length).toBeGreaterThan(0);
         expect(productService.products).toHaveLength(2);
         expect(productService.products[1]?.name).toBe('Mouse');
     });
