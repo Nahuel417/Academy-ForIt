@@ -1,3 +1,4 @@
+import { createBudget } from './budget/create-budget.js';
 import { createOrder } from './order/create-order.js';
 import { getOrderById } from './order/get-order-id.js';
 import { getOrderList } from './order/get-order-list.js';
@@ -40,6 +41,9 @@ export const domainUseCases = {
     updateOrderStatus: { useCase: updateOrderStatus, enable: true },
     getOrderById: { useCase: getOrderById, enable: true },
     getOrderList: { useCase: getOrderList, enable: true },
+
+    // Budgets
+    createBudget: { useCase: createBudget, enable: true },
 } as const satisfies Record<string, UseCaseDeclaration>;
 
 export const USE_CASE_NAME = Object.keys(domainUseCases).reduce((acc, key) => {
