@@ -4,6 +4,7 @@ import { getBudgetById } from './budget/get-budget-by-id.js';
 import { getBudgetsList } from './budget/get-budgets-list.js';
 import { addMovement } from './cashRegister/add-movement.js';
 import { closeCashRegister } from './cashRegister/close-cash-register.js';
+import { getCashRegisterByDate } from './cashRegister/get-cash-register-by-date.js';
 import { openCashRegister } from './cashRegister/open-cash-register.js';
 import { createOrder } from './order/create-order.js';
 import { getOrderById } from './order/get-order-id.js';
@@ -58,6 +59,7 @@ export const domainUseCases = {
     openCashRegister: { useCase: openCashRegister, enable: true },
     addMovement: { useCase: addMovement, enable: true },
     closeCashRegister: { useCase: closeCashRegister, enable: true },
+    getCashRegisterByDate: { useCase: getCashRegisterByDate, enable: true },
 } as const satisfies Record<string, UseCaseDeclaration>;
 
 export const USE_CASE_NAME = Object.keys(domainUseCases).reduce((acc, key) => {
