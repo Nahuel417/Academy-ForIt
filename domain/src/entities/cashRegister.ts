@@ -5,8 +5,8 @@ import type { User } from './user.js';
 
 export interface CashRegister extends Entity {
     date: Date; // Fecha de la caja (única por día)
-    openedBy: User; // Usuario que abrió la caja
-    closedAt?: Date; // Momento de cierre
+    openedBy?: User | undefined; // Usuario que abrió la caja
+    closedAt?: Date | undefined; // Momento de cierre
     initialAmount: number; // Monto inicial al abrir
     orders: Order[]; // Ventas del día
     movements: CashRegisterMovement[]; // Gastos o ingresos extra
