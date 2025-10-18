@@ -7,6 +7,7 @@ import { closeCashRegister } from './cashRegister/close-cash-register.js';
 import { getCashRegisterByDate } from './cashRegister/get-cash-register-by-date.js';
 import { openCashRegister } from './cashRegister/open-cash-register.js';
 import { calculateBudgetTotal } from './general/calculate-budget-total.js';
+import { calculateCashRegisterTotals } from './general/calculate-cash-register-totals.js';
 import { calculateOrderTotal } from './general/calculate-order-total.js';
 import { createOrder } from './order/create-order.js';
 import { getOrderById } from './order/get-order-id.js';
@@ -66,6 +67,7 @@ export const domainUseCases = {
     // General
     calculateOrderTotal: { useCase: calculateOrderTotal, enable: true },
     calculateBudgetTotal: { useCase: calculateBudgetTotal, enable: true },
+    calculateCashRegisterTotals: { useCase: calculateCashRegisterTotals, enable: true },
 } as const satisfies Record<string, UseCaseDeclaration>;
 
 export const USE_CASE_NAME = Object.keys(domainUseCases).reduce((acc, key) => {
