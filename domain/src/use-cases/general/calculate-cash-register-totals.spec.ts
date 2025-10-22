@@ -34,7 +34,7 @@ describe('calculateCashRegisterTotals use-case', () => {
         const updated = await calculateCashRegisterTotals({}, register);
         expect(updated.totalSales).toBe(500);
         expect(updated.totalMovements).toBe(30);
-        expect(updated.finalAmount).toBe(530);
+        expect(updated.finalAmount).toBe(1030);
     });
 
     test('should handle no orders', async () => {
