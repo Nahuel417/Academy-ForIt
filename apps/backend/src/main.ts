@@ -1,4 +1,6 @@
 // @ts-ignore
+import 'dotenv/config';
+// @ts-ignore
 import { app } from '@backend/app.js';
 
 const PORT = process.env.PORT || 3000;
@@ -6,4 +8,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`📖 Health check: http://localhost:${PORT}/health`);
+  console.log(`🔐 JWT Secret: ${process.env.JWT_SECRET ? '✅ Configured' : '❌ Not set'}`);
 });

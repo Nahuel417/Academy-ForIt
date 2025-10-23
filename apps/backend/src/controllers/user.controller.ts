@@ -6,6 +6,8 @@ import { register, authenticate, updateUserRole } from 'demo-domain';
 import type { UserService } from 'demo-domain';
 // @ts-ignore
 import type { UserRoleType } from 'demo-domain';
+// @ts-ignore
+import { JWTService } from '@backend/services/auth.service.js';
 
 interface UserControllerDeps {
   userService: UserService;
@@ -41,7 +43,20 @@ export class UserController {
         return res.status(401).json({ error: result.message });
       }
 
-      res.status(200).json(result);
+      // Generate JWT token
+      const token = JWTService.generateToken({
+        userId: result.id,
+        email: result.email,
+        role: result.role
+      });
+
+      const { password: _, ...userWithoutPassword } = result;
+
+      res.status(200).json({
+        user: userWithoutPassword,
+        token,
+        message: 'Login successful'
+      });
     } catch (error) {
       res.status(500).json({ error: 'Internal server error' });
     }

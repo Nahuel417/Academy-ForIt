@@ -6,10 +6,13 @@
   "license": "MIT",
   "dependencies": {
     "@types/express": "^5.0.3",
+    "bcryptjs": "^3.0.2",
     "better-sqlite3": "^12.2.0",
     "cors": "^2.8.5",
     "demo-domain": "*",
-    "express": "^5.1.0"
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
   },
   "scripts": {
     "dev": "tsx watch src/main.ts",
@@ -18,8 +21,10 @@
     "test": "vitest"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
     "@types/better-sqlite3": "^7.6.13",
     "@types/cors": "^2.8.19",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/supertest": "^6.0.2",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
