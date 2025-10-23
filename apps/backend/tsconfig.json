@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "demo-domain": ["../../domain/dist"]
+      "demo-domain": ["../../domain/src"],
+      "@backend/*": ["src/*"]
     },
     "outDir": "dist",
     "rootDir": "src"

@@ -1,6 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import request from 'supertest';
-import { app } from '../app.js';
+// @ts-ignore
+import { app } from '@backend/app.js';
 
 describe('Health Check', () => {
   test('should return 200 OK for /health endpoint', async () => {
