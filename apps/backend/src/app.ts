@@ -6,6 +6,8 @@ import { userRoutes } from '@backend/routes/user.routes.js';
 import { productRoutes } from '@backend/routes/product.routes.js';
 // @ts-ignore
 import { orderRoutes } from '@backend/routes/order.routes.js';
+// @ts-ignore
+import { budgetRoutes } from '@backend/routes/budget.routes.js';
 
 const app = express();
 
@@ -17,6 +19,7 @@ app.use(express.json());
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/budgets', budgetRoutes);
 
 // Health check route
 app.get('/health', (req, res) => {
