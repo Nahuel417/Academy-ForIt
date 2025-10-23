@@ -2,6 +2,8 @@ import { describe, test, expect } from 'vitest';
 import request from 'supertest';
 // @ts-ignore
 import { app } from '@backend/app.js';
+// @ts-ignore
+import { tokens } from '@backend/tests/auth.helper.js';
 
 describe('Budgets API', () => {
   test('POST /budgets - should create a new budget', async () => {
@@ -15,6 +17,7 @@ describe('Budgets API', () => {
 
     const response = await request(app)
       .post('/budgets')
+      .set('Authorization', `Bearer ${tokens.employeeToken}`)
       .send(budgetData);
 
     expect(response.status).toBe(201);
@@ -26,7 +29,8 @@ describe('Budgets API', () => {
 
   test('GET /budgets - should return list of budgets', async () => {
     const response = await request(app)
-      .get('/budgets');
+      .get('/budgets')
+      .set('Authorization', `Bearer ${tokens.employeeToken}`);
 
     expect(response.status).toBe(200);
     expect(Array.isArray(response.body)).toBe(true);

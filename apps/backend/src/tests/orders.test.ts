@@ -2,6 +2,8 @@ import { describe, test, expect } from 'vitest';
 import request from 'supertest';
 // @ts-ignore
 import { app } from '@backend/app.js';
+// @ts-ignore
+import { tokens } from '@backend/tests/auth.helper.js';
 
 describe('Orders API', () => {
   test('POST /orders - should create a new order', async () => {
@@ -16,6 +18,7 @@ describe('Orders API', () => {
 
     const response = await request(app)
       .post('/orders')
+      .set('Authorization', `Bearer ${tokens.employeeToken}`)
       .send(orderData);
 
     expect(response.status).toBe(201);
@@ -29,7 +32,8 @@ describe('Orders API', () => {
 
   test('GET /orders - should return list of orders', async () => {
     const response = await request(app)
-      .get('/orders');
+      .get('/orders')
+      .set('Authorization', `Bearer ${tokens.employeeToken}`);
 
     expect(response.status).toBe(200);
     expect(Array.isArray(response.body)).toBe(true);
@@ -39,6 +43,7 @@ describe('Orders API', () => {
     // First create an order
     const createResponse = await request(app)
       .post('/orders')
+      .set('Authorization', `Bearer ${tokens.employeeToken}`)
       .send({
         customerName: 'Jane Smith',
         items: [{ productId: 'prod-1', quantity: 1, unitPrice: 75 }],
@@ -49,6 +54,7 @@ describe('Orders API', () => {
 
     const response = await request(app)
       .patch(`/orders/${orderId}/status`)
+      .set('Authorization', `Bearer ${tokens.employeeToken}`)
       .send({ status: 'COMPLETED' });
 
     expect(response.status).toBe(200);
