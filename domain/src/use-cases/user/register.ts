@@ -24,4 +24,5 @@ export async function register({ userService }: RegisterDeps, { email, password,
     };
 
     await userService.save(newUser);
+    return newUser;
 }

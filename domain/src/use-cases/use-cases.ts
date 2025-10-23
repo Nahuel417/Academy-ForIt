@@ -78,3 +78,7 @@ export const USE_CASE_NAME = Object.keys(domainUseCases).reduce((acc, key) => {
 export type UseCaseName = (typeof USE_CASE_NAME)[keyof typeof USE_CASE_NAME];
 
 export type UseCaseType<TEndpointName extends UseCaseName> = (typeof domainUseCases)[TEndpointName]['useCase'];
+
+export { register } from './user/register.js';
+export { authenticate } from './user/authenticate.js';
+export { updateUserRole } from './user/update-user-role.js';
