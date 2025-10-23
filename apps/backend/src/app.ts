@@ -4,6 +4,8 @@ import cors from 'cors';
 import { userRoutes } from '@backend/routes/user.routes.js';
 // @ts-ignore
 import { productRoutes } from '@backend/routes/product.routes.js';
+// @ts-ignore
+import { orderRoutes } from '@backend/routes/order.routes.js';
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.use(express.json());
 // Routes
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
+app.use('/orders', orderRoutes);
 
 // Health check route
 app.get('/health', (req, res) => {
